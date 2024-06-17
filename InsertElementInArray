@@ -1,0 +1,35 @@
+import java.util.Arrays;
+
+public class InsertElementInArray {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5};
+        int element = 10;
+        int position = 2;
+
+        System.out.println("Original Array: " + Arrays.toString(array));
+
+        array = insertElement(array, element, position);
+
+        System.out.println("Array after inserting " + element + " at position " + position + ": " + Arrays.toString(array));
+    }
+
+    public static int[] insertElement(int[] array, int element, int position) {
+        int newArrayLength = array.length + 1;
+        int[] newArray = new int[newArrayLength];
+        
+        // Copy elements from the original array to the new array until the insertion position
+        for (int i = 0; i < position; i++) {
+            newArray[i] = array[i];
+        }
+        
+        // Insert the element at the specified position
+        newArray[position] = element;
+        
+        // Copy the remaining elements from the original array to the new array
+        for (int i = position + 1; i < newArrayLength; i++) {
+            newArray[i] = array[i - 1];
+        }
+
+        return newArray;
+    }
+}
