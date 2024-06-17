@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class ATMTotalBalance {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Define denominations
+        int[] denominations = {2000, 500, 200, 100};
+        int[] notes = new int[4];
+
+        // Get the total number of notes for each denomination from the user
+        for (int i = 0; i < denominations.length; i++) {
+            System.out.print("Enter the number of " + denominations[i] + " notes: ");
+            notes[i] = scanner.nextInt();
+        }
+
+        // Calculate total balance
+        int totalBalance = calculateTotalBalance(denominations, notes);
+
+        // Print the total available balance
+        System.out.println("Total available balance in the ATM: " + totalBalance);
+
+        scanner.close();
+    }
+
+    // Method to calculate the total balance in the ATM
+    private static int calculateTotalBalance(int[] denominations, int[] notes) {
+        int totalBalance = 0;
+        for (int i = 0; i < denominations.length; i++) {
+            totalBalance += denominations[i] * notes[i];
+        }
+        return totalBalance;
+    }
+}
