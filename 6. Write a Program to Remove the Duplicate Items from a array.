@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class RemoveDuplicatesFromArray {
+
+    public static void main(String[] args) {
+        // Example array with duplicate items
+        Integer[] array = {1, 2, 3, 4, 2, 3, 5, 6, 1};
+
+        System.out.println("Original Array: " + Arrays.toString(array));
+
+        // Remove duplicates and get the unique elements in order
+        Integer[] uniqueArray = removeDuplicates(array);
+
+        System.out.println("Array with duplicates removed: " + Arrays.toString(uniqueArray));
+    }
+
+    // Method to remove duplicates from an array
+    public static <T> T[] removeDuplicates(T[] array) {
+        // Use a LinkedHashSet to maintain order and remove duplicates
+        Set<T> set = new LinkedHashSet<>(Arrays.asList(array));
+
+        // Convert Set back to array
+        @SuppressWarnings("unchecked")
+        T[] result = (T[]) new Object[set.size()];
+        set.toArray(result);
+
+        return result;
+    }
+}
