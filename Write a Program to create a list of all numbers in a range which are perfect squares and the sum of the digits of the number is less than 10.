@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class PerfectSquaresWithDigitSum {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the range from the user
+        System.out.print("Enter the start of the range: ");
+        int start = scanner.nextInt();
+        System.out.print("Enter the end of the range: ");
+        int end = scanner.nextInt();
+
+        // Find all numbers in the range that are perfect squares with digit sum less than 10
+        List<Integer> result = findPerfectSquaresWithDigitSum(start, end);
+
+        // Print the result
+        System.out.println("Perfect squares in the range with digit sum less than 10: " + result);
+
+        scanner.close();
+    }
+
+    // Method to find all perfect squares with digit sum less than 10 in a given range
+    private static List<Integer> findPerfectSquaresWithDigitSum(int start, int end) {
+        List<Integer> perfectSquares = new ArrayList<>();
+        for (int i = start; i <= end; i++) {
+            if (isPerfectSquare(i) && digitSum(i) < 10) {
+                perfectSquares.add(i);
+            }
+        }
+        return perfectSquares;
+    }
+
+    // Method to check if a number is a perfect square
+    private static boolean isPerfectSquare(int num) {
+        int sqrt = (int) Math.sqrt(num);
+        return sqrt * sqrt == num;
+    }
+
+    // Method to calculate the sum of the digits of a number
+    private static int digitSum(int num) {
+        int sum = 0;
+        while (num != 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+}
