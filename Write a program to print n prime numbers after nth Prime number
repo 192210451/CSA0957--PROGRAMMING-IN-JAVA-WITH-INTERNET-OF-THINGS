@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class PrimeNumbersAfterNth {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the nth prime number from the user
+        System.out.print("Enter the nth prime number: ");
+        int nth = scanner.nextInt();
+
+        // Get the number of primes to print after the nth prime number
+        System.out.print("Enter the number of primes to print after the nth prime: ");
+        int count = scanner.nextInt();
+
+        // Find the nth prime number
+        int nthPrime = findNthPrime(nth);
+        System.out.println("The " + nth + "th prime number is: " + nthPrime);
+
+        // Find and print the next 'count' prime numbers after the nth prime number
+        findAndPrintNextPrimes(nthPrime, count);
+
+        scanner.close();
+    }
+
+    // Method to find the nth prime number
+    private static int findNthPrime(int n) {
+        int count = 0;
+        int num = 2; // The first prime number
+        while (count < n) {
+            if (isPrime(num)) {
+                count++;
+            }
+            if (count < n) {
+                num++;
+            }
+        }
+        return num;
+    }
+
+    // Method to check if a number is prime
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Method to find and print the next 'count' prime numbers after a given number
+    private static void findAndPrintNextPrimes(int start, int count) {
+        int num = start + 1;
+        int found = 0;
+        while (found < count) {
+            if (isPrime(num)) {
+                System.out.println(num);
+                found++;
+            }
+            num++;
+        }
+    }
+}
