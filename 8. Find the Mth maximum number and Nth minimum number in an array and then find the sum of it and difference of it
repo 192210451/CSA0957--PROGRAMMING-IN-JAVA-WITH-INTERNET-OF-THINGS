@@ -1,0 +1,28 @@
+import java.util.Arrays;
+
+public class MthMaxAndNthMin {
+
+    public static void main(String[] args) {
+        int[] array = {5, 8, 2, 10, 1, 7, 3}; // Example array
+        int M = 2; // Mth maximum number
+        int N = 3; // Nth minimum number
+
+        // Sort the array in ascending order
+        Arrays.sort(array);
+
+        // Find the Mth maximum number and Nth minimum number
+        int mthMax = array[array.length - M];
+        int nthMin = array[N - 1];
+
+        // Calculate sum and difference
+        int sum = mthMax + nthMin;
+        int difference = mthMax - nthMin;
+
+        // Print results
+        System.out.println("Sorted Array: " + Arrays.toString(array));
+        System.out.println("Mth maximum number (" + M + "): " + mthMax);
+        System.out.println("Nth minimum number (" + N + "): " + nthMin);
+        System.out.println("Sum of Mth maximum and Nth minimum: " + sum);
+        System.out.println("Difference of Mth maximum and Nth minimum: " + difference);
+    }
+}
